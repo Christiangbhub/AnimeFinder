@@ -71,4 +71,8 @@ p {
   body {
     justify-content: center;
   }
+
+  .anime-card {
+    flex-direction: row;
+  }
 }
