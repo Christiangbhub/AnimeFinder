@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnimeFinder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css" />
+    
+  </head>
+  <body>
+    <main>
+      <h1>Welcome to AnimeFinder</h1>
+      <p>A place to find Anime for anime lovers</p>
+      <form action="/search" method="post" id="animeSearchForm">
+        <label for="anime_name"></label>
+            <div class="searchDiv">
+                <span>
+                    <img src="images/searchIcon.svg" alt="">
+                </span>
+                <input class="searchBar" id="anime_name" type="search" name="anime_name"> 
+            </div>           
+           
+    
+        
+        <input type="submit" class="searchBtn" value="search">
+      </form>
+
+
+
+      <% if (locals.anime_data) { %>
+<div class="anime-card">
+        <div class="anime-img">
+            <img src="<%=anime_data.data.images.jpg.image_url%>" alt="" />
+        </div>
+        <div class="description">
+             <div class="anime-title">
+          <p>Title: <strong><%= anime_data.data.title %></strong></p>
+        </div>
+        <div class="anime-airing">
+          <p>Status: <strong><%= anime_data.data.status %></strong></p>
+        </div>
+        <div class="anime-eps">
+          <p>Episodes: <strong><%= anime_data.data.episodes %></strong></p>
+        </div>
+        </div>
+       
+      </div>
+    <% } else if (locals.search_data) { %>
+        <div class="anime-card">
+        <div class="anime-img">
+            <img src="<%=search_data.image%>" alt="" />
+        </div>
+        <div class="description">
+             <div class="anime-title">
+          <p>Title: <strong><%= search_data.title %></strong></p>
+        </div>
+        <div class="anime-airing">
+          <p>Status: <strong><%= search_data.status %></strong></p>
+        </div>
+        <div class="anime-eps">
+          <p>Episodes: <strong><%= search_data.episodes %></strong></p>
+        </div>
+
+        <hr>
+        <div class="anime_synopsis">
+          <p class="small"><%= search_data.synopsis %>......</p>
+        </div>
+        </div>
+       
+      </div>
+      <% } %>
+
+
+      <% if (locals.error) { %>
+          <p><%=error  %></p>
+      <% } %>
+
+      
+      
+    </main>
+  </body>
+</html>
