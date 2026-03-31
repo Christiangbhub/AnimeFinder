@@ -5,6 +5,10 @@ A simple website to search up anime. Built with Node.js, Express, EJS and axios
 I used the Jokan api ( Unofficial MyAnimeList API)
 [Jikan API](https://docs.api.jikan.moe/)
 
+### LIVE DEMO
+
+[demo link](https://animefinder-pf3s.onrender.com)
+
 ### Installation
 
 1. Clone the repository
