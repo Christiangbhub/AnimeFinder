@@ -14,13 +14,14 @@
     <main>
       <h1>Welcome to AnimeFinder</h1>
       <p>A place to find Anime for anime lovers</p>
+      <a class="navLink" href="/">Back to home</a>
       <form action="/search" method="post" id="animeSearchForm">
         <label for="anime_name"></label>
             <div class="searchDiv">
                 <span>
                     <img src="images/searchIcon.svg" alt="">
                 </span>
-                <input class="searchBar" id="anime_name" type="search" name="anime_name"> 
+                <input class="searchBar" required id="anime_name" type="search" name="anime_name"> 
             </div>           
            
     
@@ -31,21 +32,29 @@
 
 
       <% if (locals.anime_data) { %>
-<div class="anime-card">
-        <div class="anime-img">
-            <img src="<%=anime_data.data.images.jpg.image_url%>" alt="" />
+      <div class="anime-card">
+         <%   anime_data.forEach((anime) => { %>
+       <div class="anime-card-data">
+        
+          <div class="anime-img">
+              <img src="<%=anime.images.jpg.image_url%>" alt="" />
+          </div>
+          <div class="description">
+            <div class="anime-title">
+              <p>Title: <span class="bold"><%= anime.titles[0].title %></span></p>
+            </div>
+            <div class="anime-airing">
+              <p>Status: <span class="bold"><%= anime.status %></span></p>
+            </div>
+            <div class="anime-eps">
+              <p>Episodes: <span class="bold"><%= anime.episodes %></span></p>
+            </div>
+       </div>
+          
         </div>
-        <div class="description">
-             <div class="anime-title">
-          <p>Title: <span class="bold"><%= anime_data.data.title %></span></p>
-        </div>
-        <div class="anime-airing">
-          <p>Status: <span class="bold"><%= anime_data.data.status %></span></p>
-        </div>
-        <div class="anime-eps">
-          <p>Episodes: <span class="bold"><%= anime_data.data.episodes %></span></p>
-        </div>
-        </div>
+
+        <% }) %>
+        
        
       </div>
     <% } else if (locals.search_data) { %>
@@ -63,8 +72,12 @@
         <div class="anime-eps">
           <p>Episodes: <span class="bold"><%= search_data.episodes %></span></p>
         </div>
-
+          
         <hr>
+        <div class="anime-synopsis">
+          <p class="small"><%= search_data.synopsis %></p>
+        </div>
+        
        
         </div>
        

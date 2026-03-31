@@ -9,7 +9,7 @@ body {
   background-color: #143a40;
   color: #f5f5f5;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   padding: 10px;
   /* height: 100vh; */
@@ -40,6 +40,14 @@ body {
   background-color: #f0516f;
 }
 
+.navLink {
+  color: white;
+}
+
+.navLink:hover {
+  color: #f0516f;
+}
+
 .searchBtn,
 .searchBar {
   padding: 5px 10px;
@@ -48,36 +56,40 @@ body {
 
 .anime-card {
   display: flex;
-  flex-direction: column;
+  gap: 15px;
   margin: 20px 0;
   padding: 5px;
   border-radius: 10px;
-  gap: 10px;
-  max-width: 500px;
+  /* width: 600px; */
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
 }
 
 .anime-img img {
   border-radius: 5px;
 }
+
 p {
   line-height: 1.5;
   /* margin: 1px 0; */
 }
 
 .small {
-  font-size: 0.7rem;
+  font-size: 13px;
 }
 
 .bold {
   font-weight: bold;
 }
 
-@media (min-width: 600px) {
-  body {
-    justify-content: center;
-  }
+.anime-card-data {
+  width: 250px;
+  border: 1px solid #cbcbcbb1;
+  border-radius: 10px;
+  padding: 10px;
+}
 
-  .anime-card {
-    flex-direction: row;
-  }
+.anime-synopsis {
+  width: 500px;
 }

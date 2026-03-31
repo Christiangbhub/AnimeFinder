@@ -14,15 +14,13 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
-  const randomNum = Math.floor(Math.random() * 10) + 1;
+  const randomNum = Math.floor(Math.random() * 50) + 1;
   try {
-    const response = await axios.get(API_URL + "/anime/" + randomNum);
+    const response = await axios.get(API_URL + "/anime");
     const result = response.data;
-    // console.log("images: " + JSON.stringify(response.data.data.images));
-    res.render("index.ejs", { anime_data: result });
-    // console.log(result.data.images.jpg.image_url);
+    res.render("index.ejs", { anime_data: result.data });
   } catch (error) {
-    res.render("index.ejs", { error: error.message });
+    res.render("index.ejs", { error: "on load error" + error.message });
   }
 });
 
@@ -38,7 +36,7 @@ app.post("/search", async (req, res) => {
     const image_url = result.data[0].images.jpg.image_url;
     const anime_title = result.data[0].titles[0].title;
     const anime_status = result.data[0].status;
-    const anime_synopsis = result.data[0].synopsis.split(".", 2);
+    const anime_synopsis = result.data[0].synopsis;
     // console.log(anime_status);/
     const anime_eps = result.data[0].episodes;
     const data = {
